@@ -27,9 +27,9 @@ def contact():
 def components():
     return render_template("components.html")
 
-# @app.route("/liveresume.html")
-# def liveresume():
-#     return render_template("liveresume.html")
+@app.route("/liveresume.html")
+def liveresume():
+    return render_template("liveresume.html")
 
 
 
