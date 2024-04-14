@@ -23,13 +23,13 @@ def about():
 def contact():
     return render_template("contact.html")
 
-@app.route("/components.html")
-def components():
-    return render_template("components.html")
+@app.route("/resume.html")
+def resume():
+    return render_template("resume.html")
 
-@app.route("/liveresume.html")
-def liveresume():
-    return render_template("liveresume.html")
+# @app.route("/liveresume.html")
+# def liveresume():
+#     return render_template("liveresume.html")
 
 
 
