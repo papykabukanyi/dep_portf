@@ -37,7 +37,7 @@ def resume():
 
 def send_email(subject, email, message):
     msg = MIMEText(f"Subject: {subject}\nEmail: {email}\nMessage: {message}")
-    msg['Subject'] = 'Form Submission'
+    msg['Subject'] = 'Incoming Porfolio Message!'
     msg['From'] = EMAIL_ADDRESS
     msg['To'] = EMAIL_ADDRESS
 
@@ -54,7 +54,7 @@ def contact():
         message = request.form['message']
         # Process form data (e.g., store in database, send email, etc.)
         send_email(subject, email, message)
-        return 'Form submitted successfully!'
+        return render_template('emailsent.html')
     return render_template('contact.html')
 
 # @app.route("/liveresume.html")
