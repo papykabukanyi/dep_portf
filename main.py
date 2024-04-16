@@ -11,18 +11,23 @@ EMAIL_PASSWORD = 'snwucxupdkadlfef'
 app = Flask(__name__)
 
 
+@app.route("/")
+@app.route("/index")
 @app.route("/index.html")
 def index():
     return render_template("index.html")
 
+@app.route("/works")
 @app.route("/works.html")
 def works():
     return render_template("works.html")
 
+@app.route("/work")
 @app.route("/work.html")
 def work():
     return render_template("work.html")
 
+@app.route("/about")
 @app.route("/about.html")
 def about():
     return render_template("about.html")
@@ -31,6 +36,7 @@ def about():
 # def contact():
 #     return render_template("contact.html")
 
+@app.route("/resume")
 @app.route("/resume.html")
 def resume():
     return render_template("resume.html")
@@ -47,6 +53,7 @@ def send_email(subject, email, message):
         server.sendmail(EMAIL_ADDRESS, EMAIL_ADDRESS, msg.as_string())
 
 @app.route('/contact', methods=['GET', 'POST'])
+@app.route('/contact.html', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
         email = request.form['email']
