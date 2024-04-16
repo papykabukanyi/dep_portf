@@ -1,15 +1,9 @@
 from flask import Flask, render_template, request
 import smtplib
 from email.mime.text import MIMEText
-
-
-SMTP_SERVER = 'smtp.gmail.com'
-SMTP_PORT = 587
-EMAIL_ADDRESS = 'papykabukanyi@gmail.com'
-EMAIL_PASSWORD = 'snwucxupdkadlfef'
+from config import SMTP_SERVER, SMTP_PORT, EMAIL_ADDRESS, EMAIL_PASSWORD
 
 app = Flask(__name__)
-
 
 @app.route("/")
 @app.route("/index")

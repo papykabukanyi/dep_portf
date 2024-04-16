@@ -1,5 +1,4 @@
-# Email configuration
-SMTP_SERVER = 'smtp-relay.brevo.com'
+SMTP_SERVER = 'smtp.gmail.com'
 SMTP_PORT = 587
 EMAIL_ADDRESS = 'papykabukanyi@gmail.com'
-EMAIL_PASSWORD = 'kVmRbzZMTOaGx4JA'
+EMAIL_PASSWORD = 'snwucxupdkadlfef'
