@@ -1,4 +1,12 @@
 from flask import Flask, render_template, request
+import smtplib
+from email.mime.text import MIMEText
+
+
+SMTP_SERVER = 'smtp.gmail.com'
+SMTP_PORT = 587
+EMAIL_ADDRESS = 'papykabukanyi@gmail.com'
+EMAIL_PASSWORD = 'snwucxupdkadlfef'
 
 app = Flask(__name__)
 
@@ -27,6 +35,17 @@ def about():
 def resume():
     return render_template("resume.html")
 
+def send_email(subject, email, message):
+    msg = MIMEText(f"Subject: {subject}\nEmail: {email}\nMessage: {message}")
+    msg['Subject'] = 'Form Submission'
+    msg['From'] = EMAIL_ADDRESS
+    msg['To'] = EMAIL_ADDRESS
+
+    with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
+        server.starttls()
+        server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+        server.sendmail(EMAIL_ADDRESS, EMAIL_ADDRESS, msg.as_string())
+
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
@@ -34,6 +53,7 @@ def contact():
         subject = request.form['subject']
         message = request.form['message']
         # Process form data (e.g., store in database, send email, etc.)
+        send_email(subject, email, message)
         return 'Form submitted successfully!'
     return render_template('contact.html')
 
